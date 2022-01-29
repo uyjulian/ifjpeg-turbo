@@ -22,13 +22,13 @@ const char *plugin_info[4] = {
 
 const int header_size = 64;
 
-int getBMPFromPNG(uint8_t *input_data, long file_size,
+int getBMPFromJPEG(const uint8_t *input_data, size_t file_size,
                   BITMAPFILEHEADER *bitmap_file_header,
                   BITMAPINFOHEADER *bitmap_info_header, uint8_t **data) {
 
 	int jpegSubsamp, width, height;
 	tjhandle jpegDecompressor = tjInitDecompress();
-	tjDecompressHeader2(jpegDecompressor, input_data, file_size, &width,
+	tjDecompressHeader2(jpegDecompressor, (uint8_t *)input_data, file_size, &width,
 	                    &height, &jpegSubsamp);
 
 	int bit_length = width * 4;
@@ -67,7 +67,7 @@ int getBMPFromPNG(uint8_t *input_data, long file_size,
 	return 0;
 }
 
-BOOL IsSupportedEx(char *filename, char *data) {
+BOOL IsSupportedEx(const char *data) {
 	if (!memcmp(data, "\xFF\xD8\xFF", 3) && data[3] >= 0xE0 &&
 	    data[3] <= 0xEF) {
 		return TRUE;
@@ -75,8 +75,8 @@ BOOL IsSupportedEx(char *filename, char *data) {
 	return FALSE;
 }
 
-int GetPictureInfoEx(long data_size, char *data,
-                     struct PictureInfo *picture_info) {
+int GetPictureInfoEx(size_t data_size, const char *data,
+                     SusiePictureInfo *picture_info) {
 	int jpegSubsamp, width, height;
 	tjhandle jpegDecompressor = tjInitDecompress();
 	tjDecompressHeader2(jpegDecompressor, (uint8_t *)data, data_size, &width,
@@ -95,8 +95,8 @@ int GetPictureInfoEx(long data_size, char *data,
 	return SPI_ALL_RIGHT;
 }
 
-int GetPictureEx(long data_size, HANDLE *bitmap_info, HANDLE *bitmap_data,
-                 SPI_PROGRESS progress_callback, long user_data, char *data) {
+int GetPictureEx(size_t data_size, HANDLE *bitmap_info, HANDLE *bitmap_data,
+                 SPI_PROGRESS progress_callback, intptr_t user_data, const char *data) {
 	uint8_t *data_u8;
 	BITMAPINFOHEADER bitmap_info_header;
 	BITMAPFILEHEADER bitmap_file_header;
@@ -107,7 +107,7 @@ int GetPictureEx(long data_size, HANDLE *bitmap_info, HANDLE *bitmap_data,
 		if (progress_callback(1, 1, user_data))
 			return SPI_ABORT;
 
-	if (!getBMPFromPNG((uint8_t *)data, data_size, &bitmap_file_header,
+	if (!getBMPFromJPEG((const uint8_t *)data, data_size, &bitmap_file_header,
 	                   &bitmap_info_header, &data_u8))
 		return SPI_MEMORY_ERROR;
 	*bitmap_info = LocalAlloc(LMEM_MOVEABLE, sizeof(BITMAPINFOHEADER));

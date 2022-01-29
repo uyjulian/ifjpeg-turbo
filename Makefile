@@ -21,7 +21,7 @@ CFLAGS += $(ALLSRCFLAGS) -Wall -Wno-unused-value -Wno-format -DNDEBUG -DWIN32 -D
 CFLAGS += -D_USRDLL -DUNICODE -D_UNICODE 
 CXXFLAGS += $(CFLAGS) -fpermissive
 WINDRESFLAGS += $(ALLSRCFLAGS) --codepage=65001
-LDFLAGS += -static -static-libgcc -shared -Wl,--kill-at
+LDFLAGS += -static -static-libgcc -shared -Wl,--add-stdcall-alias
 LDLIBS +=
 
 %.o: %.c
