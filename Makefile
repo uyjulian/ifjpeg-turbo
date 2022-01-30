@@ -44,7 +44,7 @@ OBJECTS := $(OBJECTS:.rc=.o)
 
 BINARY ?= ifjpeg-turbo_unstripped.spi
 BINARY_STRIPPED ?= ifjpeg-turbo.spi
-ARCHIVE ?= ifjpeg-turbo.$(GIT_TAG).7z
+ARCHIVE ?= ifjpeg-turbo.7z
 
 all: $(BINARY_STRIPPED)
 
