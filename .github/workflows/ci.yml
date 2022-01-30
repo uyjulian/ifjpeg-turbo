@@ -44,7 +44,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: ifjpeg-turbo-win32
-          path: ifjpeg-turbo.*.7z
+          path: ifjpeg-turbo.7z
 
   create-release:
     needs: [build-win32]
