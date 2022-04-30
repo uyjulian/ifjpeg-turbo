@@ -55,7 +55,25 @@ clean:
 	rm -rf external/libjpeg-turbo/build
 
 external/libjpeg-turbo/build/libturbojpeg.a:
-	mkdir -p external/libjpeg-turbo/build && cd external/libjpeg-turbo/build && cmake -GNinja -DCMAKE_TOOLCHAIN_FILE=../../../mingw32.cmake -DCMAKE_BUILD_TYPE=Release .. && ninja
+	mkdir -p external/libjpeg-turbo/build && \
+	cd external/libjpeg-turbo/build && \
+	cmake \
+		-GNinja \
+		-DCMAKE_SYSTEM_NAME=Windows \
+		-DCMAKE_SYSTEM_PROCESSOR=i686 \
+		-DCMAKE_FIND_ROOT_PATH=/dev/null \
+		-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
+		-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
+		-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
+		-DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY \
+		-DCMAKE_DISABLE_FIND_PACKAGE_PkgConfig=TRUE \
+		-DCMAKE_C_COMPILER=$(CC) \
+		-DCMAKE_CXX_COMPILER=$(CXX) \
+		-DCMAKE_RC_COMPILER=$(WINDRES) \
+		-DCMAKE_INSTALL_PREFIX=/opt/libjpeg-turbo \
+		-DCMAKE_BUILD_TYPE=Release \
+		.. && \
+	ninja
 
 $(ARCHIVE): $(BINARY_STRIPPED)
 	rm -f $(ARCHIVE)
