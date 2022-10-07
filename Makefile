@@ -124,10 +124,9 @@ clean::
 	rm -rf external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME)
 
 external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME)/libturbojpeg.a:
-	mkdir -p external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME) && \
-	cd external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME) && \
 	cmake \
-		-GNinja \
+		-B external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME) \
+		-S external/libjpeg-turbo \
 		-DCMAKE_SYSTEM_NAME=Windows \
 		-DCMAKE_SYSTEM_PROCESSOR=$(TARGET_CMAKE_SYSTEM_PROCESSOR) \
 		-DCMAKE_FIND_ROOT_PATH=/dev/null \
@@ -141,7 +140,7 @@ external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME)/libturbojpeg.a:
 		-DCMAKE_INSTALL_PREFIX=/opt/libjpeg-turbo \
 		-DCMAKE_BUILD_TYPE=Release \
 		.. && \
-	ninja
+	cmake --build external/libjpeg-turbo/$(BUILD_DIR_EXTERNAL_NAME)
 
 $(ARCHIVE): $(BINARY_STRIPPED) $(EXTRA_DIST)
 	@printf '\t%s %s\n' 7Z $@
