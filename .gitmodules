@@ -1,4 +1,0 @@
-[submodule "external/libjpeg-turbo"]
-	path = external/libjpeg-turbo
-	url = https://github.com/libjpeg-turbo/libjpeg-turbo.git
-	ignore = dirty
