@@ -112,7 +112,7 @@ int GetPictureEx(size_t data_size, HANDLE *bitmap_info, HANDLE *bitmap_data,
 	if (getBMPFromJPEG((const uint8_t *)data, data_size, &bitmap_file_header,
 	                   &bitmap_info_header, &data_u8))
 		return SPI_MEMORY_ERROR;
-	*bitmap_info = LocalAlloc(LMEM_MOVEABLE, sizeof(BITMAPINFOHEADER));
+	*bitmap_info = LocalAlloc(LMEM_MOVEABLE | LMEM_ZEROINIT, sizeof(BITMAPINFO));
 	*bitmap_data = LocalAlloc(LMEM_MOVEABLE, bitmap_file_header.bfSize -
 	                                             bitmap_file_header.bfOffBits);
 	if (*bitmap_info == NULL || *bitmap_data == NULL) {
