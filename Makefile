@@ -159,7 +159,7 @@ DEPENDENCY_SOURCE_DIRECTORY_LIBJPEG_TURBO := $(DEPENDENCY_SOURCE_DIRECTORY)/libj
 
 DEPENDENCY_SOURCE_FILE_LIBJPEG_TURBO := $(DEPENDENCY_SOURCE_DIRECTORY)/libjpeg_turbo.tar.xz
 
-DEPENDENCY_SOURCE_URL_LIBJPEG_TURBO := https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.0.0.tar.gz
+DEPENDENCY_SOURCE_URL_LIBJPEG_TURBO := https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/3.1.0.tar.gz
 
 $(DEPENDENCY_SOURCE_FILE_LIBJPEG_TURBO): | $(DEPENDENCY_SOURCE_DIRECTORY)
 	curl --location --output $@ $(DEPENDENCY_SOURCE_URL_LIBJPEG_TURBO)
