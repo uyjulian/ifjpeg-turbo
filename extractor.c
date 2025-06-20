@@ -123,7 +123,7 @@ int GetPictureEx(size_t data_size, HANDLE *bitmap_info, HANDLE *bitmap_data,
 		LocalFree(*bitmap_data);
 		return SPI_MEMORY_ERROR;
 	}
-	bitmap_info_locked->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	bitmap_info_locked->bmiHeader.biSize = sizeof(BITMAPINFO);
 	bitmap_info_locked->bmiHeader.biWidth = bitmap_info_header.biWidth;
 	bitmap_info_locked->bmiHeader.biHeight = bitmap_info_header.biHeight;
 	bitmap_info_locked->bmiHeader.biPlanes = 1;
