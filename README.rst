@@ -8,17 +8,17 @@ Downloads
 ---------
 
 | The following binaries are available:
-| \* `Win32 (Intel 32-bit
+* `Win32 (Intel 32-bit
   GCC) <https://github.com/uyjulian/ifjpeg-turbo/releases/latest/download/ifjpeg-turbo.intel32.gcc.7z>`__
-| \* `Win32 (Intel 64-bit
+* `Win32 (Intel 64-bit
   GCC) <https://github.com/uyjulian/ifjpeg-turbo/releases/latest/download/ifjpeg-turbo.intel64.gcc.7z>`__
-| \* `Win32 (Intel 32-bit
+* `Win32 (Intel 32-bit
   Clang) <https://github.com/uyjulian/ifjpeg-turbo/releases/latest/download/ifjpeg-turbo.intel32.clang.7z>`__
-| \* `Win32 (Intel 64-bit
+* `Win32 (Intel 64-bit
   Clang) <https://github.com/uyjulian/ifjpeg-turbo/releases/latest/download/ifjpeg-turbo.intel64.clang.7z>`__
-| \* `Win32 (ARM 32-bit
+* `Win32 (ARM 32-bit
   Clang) <https://github.com/uyjulian/ifjpeg-turbo/releases/latest/download/ifjpeg-turbo.arm32.clang.7z>`__
-| \* `Win32 (ARM 64-bit
+* `Win32 (ARM 64-bit
   Clang) <https://github.com/uyjulian/ifjpeg-turbo/releases/latest/download/ifjpeg-turbo.arm64.clang.7z>`__
 
 Preparing the environment
